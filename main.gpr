@@ -1,0 +1,17 @@
+limited with "opengl-glfw.gpr";
+with "opengl.gpr";
+project main  is
+for Source_dirs use ("src/");
+for Object_Dir use "obj/";
+ for Exec_Dir use ".";
+ for Main use ("fractal.adb");
+  package Compiler is
+      for Default_Switches ("ada") use
+        ("-gnat12", "-gnatwa", "-gnatwl", "-gnatwe",
+         "-fstack-check", "-g");
+   end Compiler;
+   
+   package Binder is
+      for Default_Switches ("ada") use ("-Es");
+   end Binder;
+end main;
